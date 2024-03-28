@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import React from 'react'
+import {useState} from 'react'
+export default function App() {
+const[tasks,setTask]=useState([
+    {id:1,name:"This is task 1",complete:true},
+    {id:2,name:"This is task 2",complete:false},
+    {id:3,name:"This is task 3",complete:true},
+])
+function taskdelete(id)
+{
+setTask(tasks.filter((t)=>t.id!=id))
 }
+return(
+<div className="App">
+    <h1>Task-List</h1>
+    <ul>
+{tasks.map((task)=><li>{task.id}--------{task.name}
 
-export default App;
+<button onClick={()=>taskdelete(task.id)}>Delete</button>
+
+</li>    )}
+
+    </ul>
+</div>
+
+
+)
+
+ 
+}

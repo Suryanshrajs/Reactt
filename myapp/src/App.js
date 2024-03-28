@@ -37,12 +37,19 @@ export default function App() {
     
   }
 
+const [show,setShow]=useState(true)
+
+function showhide(){
+  
+  setShow(!show)
+}
+
   return(
     <div className="App">
       <h1>Task-List</h1>
-      <button className='btn'>Show/Hide</button>
+      <button className='btn' onClick={showhide}>Show/Hide</button>
       <ul>
-      {tasks.map((task)=><li>{task.id}---------{task.name}
+      {show && tasks.map((task)=><li>{task.id}---------{task.name}
       <button onClick={()=>taskDelete(task.id)} className='btn deletebtn'>Delete</button>
       </li> )}
       </ul>
